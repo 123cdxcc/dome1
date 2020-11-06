@@ -22,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:paddingHorizontal="60dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +37,10 @@
                 android:text="用户名：" />
 
             <EditText
+                android:id="@+id/main_account"
                 android:layout_width="200dp"
+                android:maxLines="1"
+                android:singleLine="true"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -53,22 +56,22 @@
                 android:text="密码：" />
 
             <EditText
+                android:id="@+id/main_password"
                 android:layout_width="200dp"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
             android:gravity="center">
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="记住密码" />
-
             <Button
+                android:id="@+id/main_wjmm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
@@ -76,11 +79,20 @@
                 android:text="忘记密码" />
 
             <Button
+                android:id="@+id/main_zhzz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@null"
                 android:text="用户注册" />
+
+            <CheckBox
+                android:id="@+id/main_jzmm"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="记住密码" />
 
         </LinearLayout>
 
@@ -97,6 +109,7 @@
                 android:gravity="center">
 
                 <Button
+                    android:id="@+id/main_qx"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="取消" />
@@ -109,6 +122,7 @@
                 android:gravity="center">
 
                 <Button
+                    android:id="@+id/main_dl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="登陆" />
@@ -122,6 +136,7 @@
             android:gravity="right">
 
             <Button
+                android:id="@+id/main_sz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
