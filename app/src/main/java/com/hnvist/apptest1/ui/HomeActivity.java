@@ -5,11 +5,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.hnvist.apptest1.BaseApplication;
 import com.hnvist.apptest1.R;
 import com.hnvist.apptest1.ui.fragment.HjzbFragment;
 import com.hnvist.apptest1.ui.fragment.LssjFragment;
@@ -29,6 +31,12 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     private FrameLayout fragmentMain;
     private Button hjzb, lssj, sdkz, xtsz;
 
+    static void start() {
+        Intent intent = new Intent(BaseApplication.context, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        BaseApplication.context.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +44,8 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
 
         initView();
     }
+
+
 
     private void initView() {
         fragmentMain = findViewById(R.id.fragmen_mian);
@@ -65,6 +75,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 if (fragmentHjzb == null){
                     fragmentHjzb = new HjzbFragment();
                     transaction.add(R.id.fragmen_mian, fragmentHjzb);
+                    //fragmentShowOrHide(fragmentHjzb);
                 } else {
                     transaction.show(fragmentHjzb);
                 }
@@ -80,7 +91,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 break;
         }
     }
-    private void fragmentShowOrHide(int index){
+    private void fragmentShowOrHide(Fragment currentFragment, boolean flag){
 
     }
 }
