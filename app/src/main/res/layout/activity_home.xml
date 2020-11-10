@@ -19,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#ccc">
         <Button
             android:id="@+id/home_hjzb"
             android:layout_width="0dp"
@@ -31,19 +32,19 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="环境指标"/>
+            android:text="历史数据查询"/>
         <Button
             android:id="@+id/home_sdkz"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="环境指标"/>
+            android:text="手动控制"/>
         <Button
             android:id="@+id/home_xtsz"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="环境指标"/>
+            android:text="系统设置"/>
 
     </LinearLayout>
 

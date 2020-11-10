@@ -5,11 +5,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.hnvist.apptest1.BaseApplication;
 import com.hnvist.apptest1.R;
@@ -18,17 +21,13 @@ import com.hnvist.apptest1.ui.fragment.LssjFragment;
 import com.hnvist.apptest1.ui.fragment.SdkzFragment;
 import com.hnvist.apptest1.ui.fragment.XtkzFragment;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class HomeActivity extends FragmentActivity implements View.OnClickListener {
-    private List<Fragment> mList;
-    private int fragmenIndex;
     private FragmentManager manager;
-    private FragmentTransaction transaction;
+    private Fragment[] fragments;
+    private int lastIndex;
 
     private Fragment fragmentHjzb, fragmentLssj,fragmentSdkz,fragmentXtsz;
-    private FrameLayout fragmentMain;
     private Button hjzb, lssj, sdkz, xtsz;
 
     static void start() {
@@ -48,50 +47,65 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
 
 
     private void initView() {
-        fragmentMain = findViewById(R.id.fragmen_mian);
-
         hjzb = findViewById(R.id.home_hjzb);
         lssj = findViewById(R.id.home_lssj);
         sdkz = findViewById(R.id.home_sdkz);
         xtsz = findViewById(R.id.home_xtsz);
 
-
+        fragmentHjzb = new HjzbFragment();
         fragmentLssj = new LssjFragment();
         fragmentSdkz = new SdkzFragment();
         fragmentXtsz = new XtkzFragment();
 
-        mList = new ArrayList<>();
-        fragmenIndex = 0;
         manager = getSupportFragmentManager();
-        transaction = manager.beginTransaction();
+        fragments = new Fragment[]{fragmentHjzb, fragmentLssj, fragmentSdkz, fragmentXtsz};
+        lastIndex = 0;
 
+        manager.beginTransaction().add(R.id.fragmen_mian, fragments[lastIndex]).commit();
+
+        hjzb.setOnClickListener(this);
+        lssj.setOnClickListener(this);
+        sdkz.setOnClickListener(this);
+        xtsz.setOnClickListener(this);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
             case R.id.home_hjzb:
-                if (fragmentHjzb == null){
-                    fragmentHjzb = new HjzbFragment();
-                    transaction.add(R.id.fragmen_mian, fragmentHjzb);
-                    //fragmentShowOrHide(fragmentHjzb);
-                } else {
-                    transaction.show(fragmentHjzb);
+                if (lastIndex != 0){
+                    fragmentHide(lastIndex, 0);
+                    lastIndex = 0;
                 }
                 break;
             case R.id.home_lssj:
-
+                if (lastIndex != 1){
+                    fragmentHide(lastIndex, 1);
+                    lastIndex = 1;
+                }
                 break;
             case R.id.home_sdkz:
-
+                if (lastIndex != 2){
+                    fragmentHide(lastIndex, 2);
+                    lastIndex = 2;
+                }
                 break;
             case R.id.home_xtsz:
-
+                if (lastIndex != 3){
+                    fragmentHide(lastIndex, 3);
+                    lastIndex = 3;
+                }
                 break;
         }
     }
-    private void fragmentShowOrHide(Fragment currentFragment, boolean flag){
 
+    private void fragmentHide(int last, int index){
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.hide(fragments[last]).commit();
+        if (!fragments[index].isAdded()){
+            transaction.add(R.id.fragmen_mian, fragments[index]);
+        }
+        transaction.show(fragments[index]);
     }
 }

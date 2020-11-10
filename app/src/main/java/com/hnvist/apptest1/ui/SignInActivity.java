@@ -133,7 +133,8 @@ public class SignInActivity extends Activity {
 
         if (zh.equals(u_zh) && mm.equals(u_mm)) {
             Toast.makeText(this, "登陆成功！", Toast.LENGTH_SHORT).show();
-
+            HomeActivity.start();
+            finish();
         } else {
             Toast.makeText(this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
         }
