@@ -59,7 +59,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
 
         manager = getSupportFragmentManager();
         fragments = new Fragment[]{fragmentHjzb, fragmentLssj, fragmentSdkz, fragmentXtsz};
-        lastIndex = 0;
+        lastIndex = 4;
 
         manager.beginTransaction().add(R.id.fragmen_mian, fragments[lastIndex]).commit();
 
