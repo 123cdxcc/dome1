@@ -27,7 +27,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/f_xtkz_yy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -35,6 +34,7 @@
 
 
             <LinearLayout
+                android:id="@+id/f_xtkz_yy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FAFAFA"
